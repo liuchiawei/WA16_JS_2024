@@ -27,6 +27,7 @@ current.innerHTML = station.name;
 furigana.innerHTML = station.furigana;
 
 // 連想配列の配列
+// TODO: fetch data from jr.json
 // 山手線の各駅を連想配列として定義
 const stations = [
   {
@@ -207,10 +208,10 @@ function displayStation() {
   console.log(currentID + currentStation.name);
 }
 
-window.addEventListener("load", displayStation);
+window.onload = displayStation;
 
 // 前の駅をクリックした時の処理
-prev.addEventListener("click", () => {
+prev.onclick = () => {
   // 現在、前、次の駅IDを再計算
   currentID = prevID;
   prevID = currentID === 0 ? 28 : currentID - 1;
@@ -218,10 +219,10 @@ prev.addEventListener("click", () => {
 
   // 画面表示を更新
   displayStation();
-});
+};
 
 // 次の駅をクリックした時の処理
-next.addEventListener("click", () => {
+next.onclick = () => {
   // 現在、前、次の駅IDを再計算
   currentID = nextID;
   prevID = currentID === 0 ? 28 : currentID - 1;
@@ -229,4 +230,4 @@ next.addEventListener("click", () => {
 
   // 画面表示を更新
   displayStation();
-});
+};

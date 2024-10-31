@@ -52,22 +52,22 @@ var prevStationIndex = getPrevStationIndex();
 function updateStation() {
     // 現在の駅
     // TODO: 配列「stations」から、現在のインデックス「currentStationIndex」で、駅（連想配列）を取得
-    var station;
+    var station = stations[currentStationIndex];
 
     // TODO: 駅名表示
-    currentName.textContent;
+    currentName.textContent = station.name;
     // TODO: 駅名（ふりがな）表示
-    currentFurigana.textContent;
+    currentFurigana.textContent = station.furigana;
 
     // 次の駅のインデックス
     nextStationIndex = getNextStationIndex();
     // TODO: インデックスから駅名表示
-    nextButton.textContent;
+    nextButton.textContent = stations[nextStationIndex].name;
 
     // 前の駅のインデックス
     prevStationIndex = getPrevStationIndex();
     // TODO: インデックスから駅名表示
-    prevButton.textContent;
+    prevButton.textContent = stations[prevStationIndex].name;
 }
 
 /**
@@ -129,6 +129,7 @@ function onStationClick(id) {
 function displayStations() {
     // TODO: 駅名ボタン表示の繰り返し(for of)
     // ---- ここから ---
+    for (const station of stations) {
         const stationElement = document.createElement('div');
         stationElement.className = `
             station text-sm w-full h-[40px] rounded-full 
@@ -141,8 +142,8 @@ function displayStations() {
         stationElement.onclick = () => onStationClick(station.id);
     
         stationMap.appendChild(stationElement);
+    }
     // ---- ここまで ---
-    
 }
 
 // ページ読み込み時に初期化
