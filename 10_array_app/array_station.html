@@ -8,17 +8,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
-    <div class="container mx-auto p-8 grid md:grid-cols-2 gap-8 items-start">
+<body class="bg-gray-200 min-h-screen flex items-center justify-center">
+    <div class="container max-w-full mx-auto p-8 grid md:grid-cols-1 md:max-w-md gap-8 items-start">
         <div class="bg-white shadow-md rounded-lg p-4 text-center">
             <div id="current-station" class="text-3xl font-extrabold text-black mb-2">
             </div>
             <div id="current-furigana" class="text-sm text-black mb-6">
             </div>
-            <div class="flex justify-center space-x-24 bg-green-500">
-                <button onclick="prevStation()" id="prev-button" class="font-extrabold text-white px-4 py-2 rounded-md">
+            <div class="w-full flex justify-center space-x-24 bg-green-500">
+                <button onclick="prevStation()" id="prev-button" class="font-extrabold w-full text-white px-4 py-2 transition duration-300 hover:bg-green-700">
                 </button>
-                <button onclick="nextStation()" id="next-button" class="font-extrabold text-white px-4 py-2 rounded-md">
+                <button onclick="nextStation()" id="next-button" class="font-extrabold w-full text-white px-4 py-2 transition duration-300 hover:bg-green-700">
                 </button>
             </div>
         </div>

@@ -5,6 +5,7 @@ const currentFurigana = document.getElementById('current-furigana');
 const nextButton = document.getElementById('next-button');
 const prevButton = document.getElementById('prev-button');
 
+// TODO: const stations from stations.csv
 // 駅名リストとふりがな
 const stations = [
     { id: 1, name: '東京', furigana: 'とうきょう' },
@@ -38,6 +39,8 @@ const stations = [
     { id: 29, name: '神田', furigana: 'かんだ' }
 ];
 
+console.log(stations);
+
 // インデックス（現在の駅）
 var currentStationIndex = getStationIndexById(1);
 // インデックス（次の駅）
@@ -68,6 +71,15 @@ function updateStation() {
     prevStationIndex = getPrevStationIndex();
     // TODO: インデックスから駅名表示
     prevButton.textContent = stations[prevStationIndex].name;
+
+    // 現在の駅の背景色を変更
+    stationMap.children[currentStationIndex].classList.add('bg-green-700');
+    // 他の駅の背景色を回復
+    for (let i = 0; i < stationMap.children.length; i++) {
+        if (i !== currentStationIndex) {
+            stationMap.children[i].classList.remove('bg-green-700');
+        }
+    }
 }
 
 /**
@@ -87,12 +99,29 @@ function getNextStationIndex() {
     return (currentStationIndex + 1) % stations.length;
 }
 
+function getDownStationIndex() {
+    if ((currentStationIndex + 4) >= stations.length) {
+        return currentStationIndex;
+    } else {
+        return (currentStationIndex + 4) % stations.length;
+    }
+}
+
+
 /**
  * getPrevStationIndex()
  * 前の駅のインデックス
- */
+*/
 function getPrevStationIndex() {
     return (currentStationIndex - 1 + stations.length) % stations.length;
+}
+
+function getUpStationIndex() {
+    if (currentStationIndex - 4 < 0) {
+        return currentStationIndex;
+    } else {
+        return (currentStationIndex - 4 + stations.length) % stations.length;
+    }
 }
 
 /**
@@ -104,13 +133,31 @@ function nextStation() {
     updateStation();
 }
 
+function downStation() {
+    currentStationIndex = getDownStationIndex();
+    updateStation();
+}
+
 /**
  * prevStation()
  * 前の駅へ戻る
- */
+*/
 function prevStation() {
     currentStationIndex = getPrevStationIndex();
     updateStation();
+}
+
+function upStation() {
+    currentStationIndex = getUpStationIndex();
+    updateStation();
+}
+
+// キーボード操作
+document.onkeydown = (e) => {
+    if (e.key === 'ArrowRight') nextStation();
+    if (e.key === 'ArrowLeft') prevStation();
+    if (e.key === 'ArrowDown') downStation();
+    if (e.key === 'ArrowUp') upStation();
 }
 
 /**
@@ -134,8 +181,10 @@ function displayStations() {
         stationElement.className = `
             station text-sm w-full h-[40px] rounded-full 
             bg-green-500 text-white flex items-center justify-center 
-            m-1 cursor-pointer
+            m-1 cursor-pointer transition duration-100 hover:bg-green-700
         `;
+        // ID
+        stationElement.id = `station-map-${station.id}`;
         // 駅名
         stationElement.textContent = station.name;
         // クリックしたとき
