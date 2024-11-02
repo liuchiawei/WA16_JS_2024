@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "山手線",
+    "code": "JY",
+    "color": "green",
+    "stations": "yamanoteLineStations"
+  },
+  {
+    "id": 2,
+    "name": "中央線",
+    "code": "JC",
+    "color": "orange",
+    "stations": "centralLineStations"
+  },
+  {
+    "id": 3,
+    "name": "京浜東北線",
+    "code": "JH",
+    "color": "blue",
+    "stations": "keihinTohokuLineStations"
+  }
+]

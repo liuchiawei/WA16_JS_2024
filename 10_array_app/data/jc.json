@@ -1,0 +1,20 @@
+[
+  { "id": 1, "name": "東京", "furigana": "とうきょう", "order": 1 },
+  { "id": 29, "name": "神田", "furigana": "かんだ", "order": 2 },
+  { "id": 32, "name": "御茶ノ水", "furigana": "おちゃのみず", "order": 3 },
+  { "id": 33, "name": "四ツ谷", "furigana": "よつや", "order": 4 },
+  { "id": 14, "name": "新宿", "furigana": "しんじゅく", "order": 5 },
+  { "id": 35, "name": "中野", "furigana": "なかの", "order": 6 },
+  { "id": 36, "name": "高円寺", "furigana": "こうえんじ", "order": 7 },
+  { "id": 37, "name": "阿佐ヶ谷", "furigana": "あさがや", "order": 8 },
+  { "id": 38, "name": "荻窪", "furigana": "おぎくぼ", "order": 9 },
+  { "id": 39, "name": "西荻窪", "furigana": "にしおぎくぼ", "order": 10 },
+  { "id": 40, "name": "吉祥寺", "furigana": "きちじょうじ", "order": 11 },
+  { "id": 41, "name": "三鷹", "furigana": "みたか", "order": 12 },
+  { "id": 42, "name": "武蔵境", "furigana": "むさしさかい", "order": 13 },
+  { "id": 43, "name": "東小金井", "furigana": "ひがしこがねい", "order": 14 },
+  { "id": 44, "name": "武蔵小金井", "furigana": "むさしこがねい", "order": 15 },
+  { "id": 45, "name": "国分寺", "furigana": "こくぶんじ", "order": 16 },
+  { "id": 46, "name": "西国分寺", "furigana": "にしこくぶんじ", "order": 17 },
+  { "id": 47, "name": "立川", "furigana": "たちかわ", "order": 18 }
+]
