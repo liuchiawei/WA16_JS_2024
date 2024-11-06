@@ -298,18 +298,18 @@ function getPrevLineIndex() {
 
 // TODO: 下上矢印キーで他の路線に進む
 // issue: 駅の看板と駅の一覧が更新されない
-// function nextLine() {
-//   currentLineIndex = getNextLineIndex();
-//   updateStation();
-//   displayStations();
-//   displayLines();
-// }
-// function prevLine() {
-//   currentLineIndex = getPrevLineIndex();
-//   displayLines();
-//   displayStations();
-//   updateStation();
-// }
+function nextLine() {
+  currentLineIndex = getNextLineIndex();
+  updateStation();
+  displayStations();
+  displayLines();
+}
+function prevLine() {
+  currentLineIndex = getPrevLineIndex();
+  displayLines();
+  displayStations();
+  updateStation();
+}
 
 // キーボード操作
 // 右矢印キーで次の駅に進む
@@ -317,8 +317,8 @@ function getPrevLineIndex() {
 document.onkeydown = (e) => {
   if (e.key === "ArrowRight") nextStation();
   if (e.key === "ArrowLeft") prevStation();
-  // if (e.key === 'ArrowDown') nextLine();
-  // if (e.key === 'ArrowUp') prevLine();
+  if (e.key === 'ArrowDown') nextLine();
+  if (e.key === 'ArrowUp') prevLine();
 };
 
 /**
