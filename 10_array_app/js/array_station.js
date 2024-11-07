@@ -192,7 +192,6 @@ function updateStation() {
   // 現在の駅
   var station = lines[currentLineIndex].stations[currentStationIndex];
 
-  console.log("station", station);
 
   currentName.textContent = station.name;
   currentFurigana.textContent = station.furigana;
@@ -226,7 +225,6 @@ function updateStation() {
   availableLines = currentStation
     ? lines.filter((line) => currentStation.codes.includes(line.code))
     : [];
-  console.log("availableLines", availableLines);
 
   displayLines();
 }
@@ -308,7 +306,7 @@ function getPrevLineIndex() {
 
 
 // TODO: 下上矢印キーで他の路線に進む
-// issue: 駅の看板と駅の一覧が更新されない
+// issue: 駅の看板と駅の一覧が更新されない、availableLinesから取得？
 function nextLine() {
   currentLineIndex = getNextLineIndex();
   updateStation();
@@ -398,7 +396,6 @@ function onLineClick(id) {
   ); // 駅の看板は保持
   displayStations();
   updateStation();
-  console.log(stations);
 }
 
 /**
