@@ -12,6 +12,9 @@ const stationMapContainer = document.getElementById("station-map-container");
 const lineMapContainer = document.getElementById("line-map-container");
 const lineMap = document.getElementById("line-map");
 
+let currentStation;
+let availableLines;
+
 // TODO: load stations from json
 // 駅名リストとふりがな
 const yamanoteLineStations = [
@@ -163,7 +166,6 @@ const lines = [
 ];
 
 let stations = lines[0].stations;
-console.log(stations);
 
 // インデックス（現在の駅）
 var currentStationIndex = getStationIndexById(1);
@@ -179,16 +181,18 @@ var nextLineIndex = getNextLineIndex();
 // インデックス（前の線路）
 var prevLineIndex = getPrevLineIndex();
 
-const currentStation = allStations.find(
-  (station) => station.id === stations[currentStationIndex].id
-);
 /**
  * updateStation(id)
  * 駅看板表示
  */
 function updateStation() {
+  currentStation = allStations.find(
+    (station) => station.id === stations[currentStationIndex].id
+  );
   // 現在の駅
   var station = lines[currentLineIndex].stations[currentStationIndex];
+
+  console.log("station", station);
 
   currentName.textContent = station.name;
   currentFurigana.textContent = station.furigana;
@@ -217,6 +221,12 @@ function updateStation() {
       );
     }
   }
+
+  // 現在の駅を含む路線のみを取得
+  availableLines = currentStation
+    ? lines.filter((line) => currentStation.codes.includes(line.code))
+    : [];
+  console.log("availableLines", availableLines);
 
   displayLines();
 }
@@ -296,6 +306,7 @@ function getPrevLineIndex() {
   return (currentLineIndex - 1 + lines.length) % lines.length;
 }
 
+
 // TODO: 下上矢印キーで他の路線に進む
 // issue: 駅の看板と駅の一覧が更新されない
 function nextLine() {
@@ -317,12 +328,12 @@ function prevLine() {
 document.onkeydown = (e) => {
   if (e.key === "ArrowRight") nextStation();
   if (e.key === "ArrowLeft") prevStation();
-  if (e.key === 'ArrowDown') nextLine();
-  if (e.key === 'ArrowUp') prevLine();
+  if (e.key === "ArrowDown") nextLine();
+  if (e.key === "ArrowUp") prevLine();
 };
 
 /**
- * onStationClick()
+ * @var onStationClick()
  * 駅をクリックして、駅の看板更新
  */
 function onStationClick(order) {
@@ -331,7 +342,7 @@ function onStationClick(order) {
 }
 
 /**
- * displayStations()
+ * @var displayStations()
  * 駅の一覧表示
  */
 function displayStations() {
@@ -357,24 +368,20 @@ function displayStations() {
 }
 
 /**
- * displayLines()
+ * @var displayLines()
  * 線路一覧表示
  */
-
 function displayLines() {
   lineMap.innerHTML = "";
   // 線路表示の繰り返し
-  for (const line of lines) {
+  for (const line of availableLines) {
     const lineElement = document.createElement("div");
     lineElement.className = `line text-sm w-full h-[40px] rounded-full bg-${line.color}-500 text-white flex items-center justify-center m-1 cursor-pointer transition duration-100 hover:bg-${line.color}-700`;
 
-    // 現在の駅が該当する路線のコードを持っている場合のみ表示
-    if (currentStation && currentStation.codes.includes(line.code)) {
-      lineElement.textContent = line.name;
-      lineElement.id = line.id;
-      lineElement.onclick = () => onLineClick(line.id);
-      lineMap.appendChild(lineElement);
-    }
+    lineElement.textContent = line.name;
+    lineElement.id = line.id;
+    lineElement.onclick = () => onLineClick(line.id);
+    lineMap.appendChild(lineElement);
   }
 }
 
@@ -422,6 +429,3 @@ window.onload = () => {
   // クリックで駅の一覧表示を非表示
   hideStationList();
 };
-
-console.log("currentStationId", currentStationId);
-console.log("currentStationIndex", currentStationIndex);
