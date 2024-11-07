@@ -21,7 +21,7 @@ const randomNumber = (min, max) => {
 const updateDiceImage = (number) => {
     var resultElement = document.getElementById("result");
     // TODO: サイコロ画像の更新
-    resultElement.src
+    resultElement.src = `./images/dice${number}.png`;
 };
 
 /**
@@ -32,13 +32,22 @@ const updateDiceImage = (number) => {
 const rollDice = () => {
     console.log("Click!");
     // TODO: 1 - 6 のランダムな数字を取得
-
+    
     // TODO: サイコロが振られている間、updateDiceImage() で画像をランダムに変更(0.05秒インターバル）
-
     // TODO: アニメーション開始: class = rolling を追加
+    const interval = setInterval(() => {
+        number = randomNumber(1, 6);
+        updateDiceImage(number);
+    }, 50);
+    diceElement.classList.add("rolling");
 
     // TODO: setTImeout で２秒後にサイコロを止める
-    // TODO: アニメーション終了 class = rolling を削除
+    setTimeout(() => {
+        number = randomNumber(1, 6);
+        updateDiceImage(number);
+        diceElement.classList.remove("rolling");
+        clearInterval(interval);
+    }, 2000);
 
     // メッセージ更新
     messageElement.innerHTML = "サイコロをふりました！";
