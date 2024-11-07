@@ -32,6 +32,7 @@ async function loadTrainLines() {
         }
         // JSONを JSオブジェクトに変換
         trainLines = await response.json();
+        console.log(trainLines)
     } catch (error) {
         alert("駅情報を取得できませんでした");
     }
@@ -178,6 +179,10 @@ function prevLine() {
 
 // イベント登録：キーボード操作での駅移動と路線切り替え
 document.onkeydown = (e) => {
+    console.log(e.key)
+    // イベントを止める
+    e.preventDefault()
+
     if (e.key === 'ArrowRight') {
         nextStation();
     } else if (e.key === 'ArrowLeft') {
