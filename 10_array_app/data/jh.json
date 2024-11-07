@@ -1,0 +1,16 @@
+[
+  { "id": 1, "name": "東京", "furigana": "とうきょう", "order": 1 },
+  { "id": 2, "name": "有楽町", "furigana": "ゆうらくちょう", "order": 2 },
+  { "id": 3, "name": "新橋", "furigana": "しんばし", "order": 3 },
+  { "id": 4, "name": "浜松町", "furigana": "はままつちょう", "order": 4 },
+  { "id": 5, "name": "田町", "furigana": "たまち", "order": 5 },
+  { "id": 6, "name": "品川", "furigana": "しながわ", "order": 6 },
+  { "id": 48, "name": "大井町", "furigana": "おおいまち", "order": 7 },
+  { "id": 49, "name": "大森", "furigana": "おおもり", "order": 8 },
+  { "id": 50, "name": "蒲田", "furigana": "かまた", "order": 9 },
+  { "id": 51, "name": "川崎", "furigana": "かわさき", "order": 10 },
+  { "id": 52, "name": "鶴見", "furigana": "つるみ", "order": 11 },
+  { "id": 53, "name": "新子安", "furigana": "しんこやす", "order": 12 },
+  { "id": 54, "name": "東神奈川", "furigana": "ひがしかながわ", "order": 13 },
+  { "id": 55, "name": "横浜", "furigana": "よこはま", "order": 14 }
+]
