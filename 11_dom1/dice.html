@@ -16,10 +16,26 @@
         <!-- id = message -->
         <div id="message" class="text-md p-3"></div>
     </nav>
-    <main class="flex mt-10 justify-center min-h-screen">
-        <div class="w-[150px] h-[150px] text-center p-[50px] bg-white shadow-lg rounded-lg">
+    <main class="flex flex-col mt-10 justify-center items-center">
+        <div id="dice" class="cursor-pointer w-[150px] h-[150px] text-center p-[50px] bg-white shadow-lg rounded-lg">
             <!-- id = result -->
             <p id="result" data-number="" class="text-5xl font-bold text-blue-600"></p>
+        </div>
+        <!-- id = dice-records -->
+        <h2 class="text-md mt-4 text-gray-600">過去の履歴</h2>
+        <div id="dice-records" class="w-[300px] bg-gray-100 p-4 rounded-lg mt-4 shadow-md flex justify-center"></div>
+        <!-- id = dashboard -->
+        <div id="dashboard-wrap" class="absolute right-[10px] bottom-[10px] w-[200px] h-[300px] bg-white rounded-lg shadow-md">
+            <h2 class="text-md text-center mt-4 font-bold">ダッシュボード</h2>
+            <div id="dashboard" class="mt-4 p-4">
+                <div id="average">平均：<span id="average-value"></span></div>
+                <div id="frequency_1">1：<span id="frequency-1-value"></span>回</div>
+                <div id="frequency_2">2：<span id="frequency-2-value"></span>回</div>
+                <div id="frequency_3">3：<span id="frequency-3-value"></span>回</div>
+                <div id="frequency_4">4：<span id="frequency-4-value"></span>回</div>
+                <div id="frequency_5">5：<span id="frequency-5-value"></span>回</div>
+                <div id="frequency_6">6：<span id="frequency-6-value"></span>回</div>
+            </div>
         </div>
     </main>
 
