@@ -11,7 +11,10 @@ messageElement.innerHTML = 'サイコロをふってください！';
 /**
  * ランダムな整数を生成
  */
-const randomNumber = (min, max) => {
+// const randomNumber = (min, max) => {
+//     return Math.floor(Math.random() * (max + 1 - min)) + min;
+// };
+function randomNumber(min, max) {
     return Math.floor(Math.random() * (max + 1 - min)) + min;
 };
 
@@ -19,9 +22,11 @@ const randomNumber = (min, max) => {
  * サイコロの画像を切り替える関数
  */
 const updateDiceImage = (number) => {
+    // imgタグ
     var resultElement = document.getElementById("result");
     // TODO: サイコロ画像の更新
-    resultElement.src
+    // ./ は現在のフォルダを意味
+    resultElement.src = "./images/dice" + number + ".png"
 };
 
 /**
@@ -31,17 +36,32 @@ const updateDiceImage = (number) => {
 // TODO: HTMLに onclickイベントで登録
 const rollDice = () => {
     console.log("Click!");
-    // TODO: 1 - 6 のランダムな数字を取得
 
-    // TODO: サイコロが振られている間、updateDiceImage() で画像をランダムに変更(0.05秒インターバル）
+    // 0.05秒間隔で画像を切り替える
+    var timer = setInterval(() => {
+        // TODO: 1 - 6 のランダムな数字を取得
+        number = randomNumber(1, 6)
+        // TODO: updateDiceImage() に number を渡して実行
+        updateDiceImage(number)
+    }, 50);
 
     // TODO: アニメーション開始: class = rolling を追加
+    // img タグを取得
+    var resultElement = document.getElementById("result");
+    // class = rolling を追加
+    resultElement.classList.add('rolling')
 
     // TODO: setTImeout で２秒後にサイコロを止める
-    // TODO: アニメーション終了 class = rolling を削除
+    setTimeout(() => {
+        // タイマー停止
+        clearInterval(timer)
+        // TODO: アニメーション終了 class = rolling を削除
+        resultElement.classList.remove('rolling')
 
-    // メッセージ更新
-    messageElement.innerHTML = "サイコロをふりました！";
+        // メッセージ更新
+        messageElement.innerHTML = "サイコロをふりました！";
+    }, 2000);
+
 };
 
 // ウィンドウ読み込み完了後に実行

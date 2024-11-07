@@ -1,19 +1,24 @@
 // TODO: id=title, id=message, id=result の Element取得
-var titleElement
-var messageElement
-var resultElement
+var titleElement = document.getElementById('title')
+var messageElement = document.getElementById('message')
+var resultElement = document.getElementById('result')
 
 console.log(titleElement)
 console.log(messageElement)
+console.log(resultElement)
 
 // TODO: titleElement に文字「DICE」を表示
+titleElement.innerHTML = "DICE"
 
 // TODO: titleElement の idを取得し、コンソール表示
+console.log(titleElement.id)
 
 // TODO: titleElement の classを取得し、コンソール表示
+console.log(titleElement.className)
 
 // TODO: titleElement に class設定
 // text-red-500 text-4xl font-bold mb-4
+titleElement.className = "text-red-500 text-4xl font-bold mb-4"
 
 /**
  * randomNumber()
@@ -34,14 +39,17 @@ const rollDice = () => {
     var number = randomNumber(1, 6)
 
     // TODO: resultElement に number を表示
-    resultElement.innerHTML
+    // resultElement.innerText = number
+    resultElement.textContent = number
 
     // TODO: messageElement に HTMLを表示
     // <p class="text-green-800">サイコロをふりました！</p>
-    messageElement.innerHTML
+    messageElement.innerHTML = '<p class="text-green-800">サイコロをふりました！</p>'
+    // messageElement.innerText = '<p class="text-green-800">サイコロをふりました！</p>'
+    // messageElement.textContent = '<p class="text-green-800">サイコロをふりました！</p>'
 
     // TODO: data-number に number を設定
-    resultElement.dataset.number
+    resultElement.dataset.number = number
 }
 
 // サイコロの実行
