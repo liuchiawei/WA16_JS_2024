@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ユーザー定義オブジェクト</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="flex items-center justify-center bg-gray-100 overflow-hidden">
+
+    <div id="output" class="text-center p-6 bg-white rounded-lg shadow-md w-full h-full flex flex-col justify-center">
+        <div id="input-area" class="w-full">
+            <h2 class="text-2xl font-bold mb-4">名前を入力してください</h2>
+            <input id="nameInput" type="text" placeholder="Enter name" class="border p-2 rounded w-full mb-4">
+            <button onclick="displayGreeting()" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 w-full">
+                Start
+            </button>
+        </div>
+
+        <!-- 横並びの表示エリア -->
+        <div class="flex flex-row items-start gap-4 mt-6 w-full px-6">
+            <!-- キャラクター画像表示エリア -->
+            <div id="characterImage" class="flex-shrink-0 w-1/3"></div>
+
+            <!-- メッセージ表示エリア（上揃え） -->
+            <div class="text-xl text-gray-800 p-4 rounded w-2/3 text-left shadow-lg h-36 overflow-hidden flex items-start">
+                <div>
+                    <p id="characterName" class="mb-2"></p>
+                    <p id="message" class="py-3"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 外部JavaScriptファイルの読み込み -->
+    <script src="js/person3.js" defer></script>
+
+</body>
+
+</html>

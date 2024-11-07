@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Roll</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/dice.css">
+</head>
+
+<body class="bg-gray-100">
+    <!-- ローディング画面 -->
+    <div id="loading" class="fixed inset-0 bg-white bg-opacity-90 flex justify-center items-center z-50">
+        <div class="text-2xl font-semibold text-gray-700">Loading...</div>
+    </div>
+
+    <nav class="text-center p-8 bg-white">
+        <h2 id="title" class="text-3xl font-bold mb-4"></h2>
+        <div id="message" class="text-green-800">
+        </div>
+    </nav>
+
+    <main class="flex flex-col items-center mt-10 min-h-screen">
+        <!-- TODO: button の onclick に rollDice() を追加 -->
+        <button id="rollButton"
+            class="mb-6 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+            サイコロを振る
+        </button>
+
+        <div id="dice" class="">
+            <img id="result" src="./images/dice1.png" alt="Dice" class="w-[150px]">
+        </div>
+
+    </main>
+
+    <script src="js/dice.js"></script>
+</body>
+
+</html>

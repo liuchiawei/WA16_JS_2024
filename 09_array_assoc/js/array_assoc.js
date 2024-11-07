@@ -228,6 +228,7 @@ next.onclick = () => {
   prevID = currentID === 0 ? 28 : currentID - 1;
   nextID = currentID === 28 ? 0 : currentID + 1;
 
+
   // 画面表示を更新
   displayStation();
 };

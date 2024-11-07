@@ -1,6 +1,8 @@
 // TODO: 配列の定義（'コーヒー', '紅茶', 'ほうじ茶'）
+
 var drinks = ["コーヒー", "紅茶", "ほうじ茶"];
 console.log(drinks);
+
 
 console.log(items)
 
@@ -36,12 +38,14 @@ function showItem() {
  * 値の更新
  */
 function updateItem() {
+
   // インデックスの取得
   const index = document.getElementById("input-index").value;
   // 値の取得
   const value = document.getElementById("input-value").value;
 
   console.log(index, value);
+
 
   // TODO: インデックスを指定して値更新
   drinks[index] = value;
