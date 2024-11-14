@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ユーザ定義オブジェクト</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 flex justify-center">
+    <main class="bg-white shadow-md rounded-lg p-6 w-full max-w-2xl mx-auto">
+        <h1 class="font-bold text-2xl text-center mb-6">クラス型オブジェクト</h1>
+        <div class="p-6">
+            <div class="my-2">
+                <label for="">name</label>
+                <div id="person-name" class="my-2 p-4 bg-gray-50 rounded-md shadow-sm"></div>
+            </div>
+            <div class="my-2">
+                <label for="">age</label>
+                <div id="person-age" class="my-2 p-4 bg-gray-50 rounded-md shadow-sm"></div>
+            </div>
+            <div class="my-2">
+                <label for="">greet()</label>
+                <div id="person-greet" class="my-2 p-4 bg-gray-50 rounded-md shadow-sm"></div>
+            </div>
+        </div>
+    </main>
+    <!-- 外部JavaScriptファイルの読み込み -->
+    <script src="js/person_class.js" defer></script>
+</body>
+
+</html>
