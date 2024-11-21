@@ -17,7 +17,7 @@ function openModal(id) {
             <h2 class="text-2xl font-bold my-5">${item.name}</h2>
             <img src="${item.image}" class="w-full h-80 rounded-xl object-cover mb-4" />
             <p class="text-left mb-4">${item.description}</p>
-            <button onclick="closeModal()" class="w-full border border-gray-300 text-gray-500 py-2 px-4 rounded">Close</button>
+            <button onclick="closeModal()" class="w-full border border-gray-300 text-gray-500 py-2 px-4 rounded hover:bg-gray-200 transition-colors duration-500">Close</button>
         `;
     modal.classList.remove("hidden");
 }
