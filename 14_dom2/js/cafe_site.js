@@ -14,7 +14,7 @@ const animationTextDelay = 200;
 // 背景画像のフェードイン時間
 const fadeInTime = 1000;
 // 背景画像の切り替え時間
-const backgroundSwitchTime = 8000;
+const backgroundSwitchTime = 4000;
 
 // キャッチコピーのElement
 const copyElement = document.getElementById('copy');
@@ -76,6 +76,7 @@ function switchBackground() {
     image.onload = () => {
         // TODO: backgroundImage のフェードアウト: style.opacity
         backgroundImage.style.opacity = 0
+        backgroundImage.classList.remove("fade-in-bottom")
 
         // フェードインで画像表示
         setTimeout(() => {
@@ -83,7 +84,7 @@ function switchBackground() {
             backgroundImage.src = images[imageIndex]
 
             // TODO: backgroundImage のフェードイン: style.opacity
-            backgroundImage.style.opacity = 1
+            backgroundImage.classList.add("fade-in-bottom")
         }, fadeInTime);
     };
 }

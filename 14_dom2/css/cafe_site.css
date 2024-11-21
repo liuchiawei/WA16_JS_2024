@@ -11,3 +11,18 @@
 .fade-in {
     animation: fadeIn 1s ease-in-out;
 }
+
+.fade-in-bottom {
+    animation: fadeInBottom 2s forwards;
+}
+
+@keyframes fadeInBottom {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
