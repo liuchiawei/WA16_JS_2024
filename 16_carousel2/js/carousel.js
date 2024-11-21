@@ -16,18 +16,23 @@ var isTransitioning = false;
  * カルーセル画像を初期化
  */
 function createCarousel() {
-    // forEach で、サムネル画像作成
+    // forEach で、カルーセル画像作成
     items.forEach(item => {
         // --- 繰り返し（ここから）---
         // TODO: imgタグ作成
+        var img = document.createElement("img")
 
         // TODO: 画像パス設定: item.image
+        img.src = item.image
 
         // TODO: class=carousel-image 追加
+        img.classList.add("carousel-image")
 
         // TODO: クリックでモーダルウィンドウ開く
+        img.onclick = () => openModal(item.id)
 
-        // TODO: 親要素に imgタグ追加
+        // TODO: 親要素(carouselImages)に imgタグ追加
+        carouselImages.appendChild(img)
         // --- 繰り返し（ここまで）---
     });
 }
@@ -38,8 +43,11 @@ function createCarousel() {
  */
 function updateCarousel() {
     // TODO: オフセット計算(%): インデックス x 100
+    // 0, -100, -200, ....
+    const offset = -currentIndex * 100
 
     // TODO: 左にずらす（%): style.transform に translateX() 設定
+    carouselImages.style.transform = `translateX(${offset}%)`
 
     // TODO: アニメーションイージング: style.transition に　transform 設定
     carouselImages.style.transition = "transform 1.0s ease";
@@ -59,7 +67,15 @@ function moveSlide(direction) {
     isTransitioning = true;
 
     // direction でインデックス計算
-    currentIndex = (currentIndex + direction + items.length) % items.length;
+    currentIndex =
+        (currentIndex + direction + items.length) % items.length;
+    // 現在: currentIndex = 0
+    // 画像の個数: 5 (items.length)
+
+    // 右：direction = 1
+    // currentIndex = (0 + 1 + 5) / 5 のあまり = 1
+    // 左：direction = -1
+    // currentIndex = (0 - 1 + 5) / 5 のあまり = 4
 
     // カルーセル処理
     updateCarousel();
@@ -99,7 +115,8 @@ function createThumbnails() {
 function next() {
     stopSlide()
     startSlide()
-    moveSlide(-1)
+    // 1: 右にスライド
+    moveSlide(1)
 }
 
 /**
@@ -109,7 +126,8 @@ function next() {
 function prev() {
     stopSlide()
     startSlide()
-    moveSlide(1)
+    // -1: 左にスライド
+    moveSlide(-1)
 }
 
 /**
@@ -118,14 +136,22 @@ function prev() {
  */
 function updateThumbnails() {
     // TODO: class=thumbnail-image をすべて取得
-    const thumbnails = [];
+    // セレクタ: .thumbnail-image 
+    const thumbnails =
+        document.querySelectorAll(".thumbnail-image")
+    // コンソール表示
+    console.log(thumbnails)
+    // document.getElementsByClassName()
+    // jQyery: $(".thumbnail-image")
 
     // サムネイル繰り返し
     thumbnails.forEach((thumb, index) => {
         if (index === currentIndex) {
             // TODO: 現在のインデックスで、class=active-thumbnail 追加: add()
+            thumb.classList.add("active-thumbnail")
         } else {
             // TODO: それ以外のインデックスで、class=active-thumbnail 削除: remove()
+            thumb.classList.remove("active-thumbnail")
         }
     });
 }
