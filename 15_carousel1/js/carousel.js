@@ -2,7 +2,7 @@
 const carouselImages = document.getElementById("carousel-images");
 
 // スクロールの速度
-const scrollSpeed = 1;
+const scrollSpeed = 3;
 // スクロール座標
 var scrollX = 0;
 
@@ -27,9 +27,12 @@ function createCarouselItem(item) {
  */
 function createCarousel() {
     // TODO: 無限スクロール用に items を連結
-    const scrollItems = items
+    const scrollItems = items.concat(items);
 
     // TODO: scrollItems を forEach() で繰り返し、 createCarouselItem() でカルーセル画像追加
+    scrollItems.forEach(item => {
+        createCarouselItem(item);
+    });
 }
 
 /**
@@ -40,14 +43,18 @@ function scrollCarousel() {
     // スクロール量の計算(px)
     scrollX -= scrollSpeed;
     // TODO: スクロールを左方向に進める: style.transform に translateX(数字px) 設定
-    carouselImages.style.transform
+    carouselImages.style.transform = `translateX(${scrollX}px)`;
 
     // カルーセルの幅を取得
     const totalWidth = carouselImages.scrollWidth;
 
     // TODO: スクロールが一定距離（カルーセルの幅半分）を超えたらリセット
+    if (scrollX <= -totalWidth / 2) {
+        scrollX = 0;
+    }
 
     // TODO: アニメーションを継続
+    requestAnimationFrame(scrollCarousel);
 }
 
 // ページ読み込み完了後に実行
