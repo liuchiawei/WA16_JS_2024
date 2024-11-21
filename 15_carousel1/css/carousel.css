@@ -1,0 +1,30 @@
+.carousel-container {
+    /*  width, height の範囲外は非表示 */
+    overflow: hidden;
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.carousel-images {
+    /* 画像横並び */
+    display: flex;
+    gap: 10px;
+}
+
+.carousel-image {
+    cursor: pointer;
+    object-fit: cover;
+    /* 画像の幅を固定 */
+    width: 300px;
+    /* 高さを自動調整 */
+    height: auto;
+    /* 画像が縮小されないように */
+    flex-shrink: 0;
+    /* 各画像を中央に揃える */
+    margin: 0 auto;
+}
+
+.carousel-image:hover {
+    filter: brightness(0.9);
+    /* 明るさを調整してハイライト効果 */
+}

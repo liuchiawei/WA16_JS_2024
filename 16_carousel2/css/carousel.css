@@ -1,0 +1,76 @@
+:root {
+    --highlight-color: #d6452b;
+}
+
+.carousel-container {
+    /*  width, height の範囲外は非表示 */
+    overflow: hidden;
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.carousel-images {
+    /* 横並び */
+    display: flex;
+    height: 300px;
+}
+
+.carousel-image {
+    cursor: pointer;
+    /* コンテナ内に収まるように縮小 */
+    object-fit: contain;
+    /* 画像の幅を固定 */
+    width: 100%;
+    /* 高さを自動調整 */
+    height: auto;
+    /* 画像が縮小されないように */
+    flex-shrink: 0;
+    /* 各画像を中央に揃える */
+    margin: 0 auto;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 250px;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.carousel-button.left {
+    left: 10px;
+}
+
+.carousel-button.right {
+    right: 10px;
+}
+
+/* サムネイル画像 */
+.thumbnail-image {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border: 2px solid transparent;
+    transition: border 0.3s;
+    cursor: pointer;
+    margin: 0 5px;
+    border-radius: 10px;
+}
+
+.thumbnail-image:hover {
+    border-color: var(--highlight-color);
+}
+
+.active-thumbnail {
+    border-color: var(--highlight-color);
+}
+
+/* サムネイルコンテナのスタイル */
+#thumbnail-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}

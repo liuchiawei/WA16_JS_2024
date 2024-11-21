@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CKEditor 5の使用例</title>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+</head>
+
+<body>
+    <h1 class="p-3 font-bold text-2xl text-center mb-6">CKEditor</h1>
+    <div class="py-3">
+        <a class="p-2 text-blue-500" href="https://ckeditor.com/ckeditor-5/" target="_blank">CKEditor Web Site</a>
+    </div>
+
+    <form action="xxxx.php" method="post">
+        <div id="editor"></div>
+    </form>
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.1.0/classic/ckeditor.js"></script>
+    <script>
+        const editor = document.getElementById('editor');
+        ClassicEditor
+            .create(editor)
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+
+</body>
+
+</html>

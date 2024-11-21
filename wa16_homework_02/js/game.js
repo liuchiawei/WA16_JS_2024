@@ -21,17 +21,24 @@ var typingTimeout;
  */
 function createThumbnails() {
     // TODO: players を for of で繰り返し
-    // --- 繰り返し（ここから） ---
-    const thumb = document.createElement("img");
-    // TODO: player.id を設定
-    thumb.id;
-    // TODO: player.imagePath を設定
-    thumb.src;
-    // TODO: 画像クリックイベント: selectPlayer() に player をいれる
-    thumb.onclick;
-    thumb.className = "thumbnail-image w-24 h-24 object-cover rounded-full border-2 cursor-pointer";
-    thumbnailContainer.appendChild(thumb);
-    // --- 繰り返し（ここまで） ---
+    for (const player of players) {
+        // console.log(player)
+        // --- 繰り返し（ここから） ---
+        const thumb = document.createElement("img");
+        // TODO: player.id を設定 player-id
+        thumb.id = "player-" + player.id;
+        // TODO: player.imagePath を設定
+        thumb.src = player.imagePath;
+        // TODO: 画像クリックイベント: selectPlayer() に player をいれる
+        thumb.onclick = () => selectPlayer(player)
+
+        // クラス設定
+        thumb.className = "thumbnail-image w-24 h-24 object-cover rounded-full border-2 cursor-pointer";
+        // img タグを thumbnailContainer に追加
+        thumbnailContainer.appendChild(thumb);
+        // --- 繰り返し（ここまで） ---
+    }
+
 }
 
 /**
@@ -142,7 +149,9 @@ function showMessage(message, name = "") {
             messageIndex++;
 
             // TODO: setTimeout() で、 typeMessage() を実行
-
+            typingTimeout = setTimeout(() => {
+                typeMessage();
+            }, 50);
         } else if (currentMessageIndex < messages.length - 1) {
             continueMark.classList.remove("hidden");
             continueMark.classList.add("blink");
@@ -180,7 +189,10 @@ function hideInputArea() {
 function start() {
     if (selectedPlayer.id) {
         // TODO: Playerインスタンス生成
+        const player = new Player(selectedPlayer)
         // TODO: greet() 実行
+        player.greet()
+
         hideInputArea();
     } else {
         showMessage("キャラクターを選択してください。");
@@ -194,6 +206,10 @@ function start() {
 document.onkeydown = function (event) {
     // TODO: キーボードキー「Enter」で次のメッセージ 
     // nextMessage()
+    if (event.key == "Enter") {
+        // 次のメッセージ表示
+        nextMessage()    
+    }
 }
 
 /**

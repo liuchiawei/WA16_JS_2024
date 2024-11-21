@@ -5,6 +5,7 @@ const images = [
     'images/cafe-shop-1.jpg',
     'images/cafe-shop-2.jpg',
     'images/cafe-shop-3.jpg',
+
 ];
 // 画像の指定インデックス
 var imageIndex = 0;
@@ -29,14 +30,24 @@ function animationText(text) {
     var index = 0;
     function displayNextChar() {
         // TODO: spanタグ作成 createElement()
+        var span = document.createElement("span")
+        // spanタグに文字をいれる
+        // span.textContent = text
         // TODO: spanに、text の index番目の文字を設定
+        span.textContent = text[index]
         // TODO: class=fade-in を設定: classList.add()
+        span.classList.add("fade-in")
         // TODO: copyElement に spanタグを追加: appendChild()
+        copyElement.appendChild(span)
+
 
         // 文字インデックスを増やす
         index++;
         if (index < text.length) {
             // TODO: 現在の文字インデックスが、文字数より小さければ、アニメーションテキスト継続
+            setTimeout(() => {
+                displayNextChar()
+            }, animationTextDelay);
         } else {
             // 初回背景画像表示
             switchBackground();
@@ -56,20 +67,23 @@ function switchBackground() {
     imageIndex = (imageIndex + 1) % images.length;
 
     // TODO: Imageオブジェクト作成 
-    var image;
+    var image = document.createElement('img')
 
     // TODO: Imageオブジェクトに配列 images の画像パス設定: image.src
+    image.src = images[imageIndex]
 
     // 画像がロードされたら実行
     image.onload = () => {
         // TODO: backgroundImage のフェードアウト: style.opacity
+        backgroundImage.style.opacity = 0
 
         // フェードインで画像表示
         setTimeout(() => {
             // TODO: backgroundImageの src 更新
-            backgroundImage.src;
+            backgroundImage.src = images[imageIndex]
 
             // TODO: backgroundImage のフェードイン: style.opacity
+            backgroundImage.style.opacity = 1
         }, fadeInTime);
     };
 }

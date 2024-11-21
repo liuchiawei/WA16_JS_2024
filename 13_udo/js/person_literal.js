@@ -8,11 +8,14 @@ const person = {
 };
 
 // TODO: オブジェクトリテラルで処理
-// name
-document.getElementById('person-name').innerHTML;
+// name: propety
+document.getElementById('person-name').innerHTML
+    = person.name
 
-// age
-document.getElementById('person-age').innerHTML;
+// age: propety
+document.getElementById('person-age').innerHTML
+    = person.age
 
-// greet()
-document.getElementById('person-greet').innerHTML;
+// greet() : method
+document.getElementById('person-greet').innerHTML
+    = person.greet()

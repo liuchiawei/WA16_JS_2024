@@ -1,0 +1,23 @@
+/* お知らせバーのスタイル */
+#announcement-bar {
+    width: 100%;
+    color: #000;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+}
+
+/* フェードインとフェードアウトのアニメーションクラス */
+.fade-in {
+    opacity: 1;
+    transition: opacity 0.5s ease-in;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
