@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBTI</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-200 flex items-center justify-center h-screen flex-col overflow-x-hidden">
+    <div class="w-full max-w-md flex flex-col items-center">
+        <h1 class="text-sm text-center">MBTI</h1>
+        <h1 class="text-2xl font-bold text-center mb-6">あなたの性格タイプは？</h1>
+        <div id="question-container" class="fade-in bg-white w-64 h-96 rounded-xl text-center shadow-lg overflow-hidden">
+            <div id="question-img" class="w-full h-64"></div>
+        </div>
+        <div class="flex gap-4 justify-center mt-2">
+            <button id="no-button" class="bg-red-500 text-white font-bold w-12 h-12 rounded-full hover:bg-red-600 transition-colors duration-300">N</button>
+            <button id="yes-button" class="bg-green-500 text-white font-bold w-12 h-12 rounded-full hover:bg-green-600 transition-colors duration-300">Y</button>
+        </div>
+    </div>
+    <div id="result-container" class="hidden bg-gray-400 text-center fixed top-0 left-0 w-full h-full flex flex-col gap-6 items-center justify-center text-lg">
+        <div id="result" class="bg-white rounded-xl p-6 shadow-2xl flex flex-col items-center"></div>
+        <button id="restart-btn" class="bg-gray-600 text-white font-bold w-12 h-12 rounded-full hover:bg-gray-700 transition-colors duration-300 shadow-lg"><i class="bi bi-arrow-clockwise"></i></button>
+    </div>
+    <script src="js/questions.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
