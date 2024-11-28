@@ -121,8 +121,7 @@ function showResult() {
     "z-0"
   );
   resultBackground.append(div);
-  // キーボード操作を停止
-  document.removeEventListener("keydown", swipe);
+  // キーボード、スワイプ操作を停止
   shouldStop = true;
 }
 
@@ -171,6 +170,7 @@ function toggleInfo() {
  * スワイプ操作
  */
 function swipe() {
+  if (shouldStop) return;
   // ドラッグ操作のための変数
   let isDragging = false;
   let startX = 0;
