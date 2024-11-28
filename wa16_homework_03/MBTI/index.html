@@ -27,9 +27,19 @@
                 <button id="no-button" class="bg-red-500 text-white font-bold w-12 h-12 rounded-full hover:bg-red-600 transition-colors duration-300">N</button>
                 <button id="yes-button" class="bg-green-500 text-white font-bold w-12 h-12 rounded-full hover:bg-green-600 transition-colors duration-300">Y</button>
             </div>
+            <div id="info-container" class="absolute bottom-4 right-4 w-72 flex flex-col gap-6 items-center justify-center z-50">
+                <div id="info-content" class="hidden bg-white w-full rounded-xl p-8 flex flex-col items-center overflow-hidden">
+                    <p class="text-xl font-bold mb-4">操作説明</p>
+                    <ol class="list-decimal text-sm space-y-2 w-3/4">
+                        <li>Y/N、または、←/→を押すと、次の質問に進みます。</li>
+                        <li>マッチングアプリのように、マウスでスワイプ操作も可能です。</li>
+                    </ol>
+                </div>
+                <button id="info-btn" class="bg-gray-300 text-white px-4 py-2 rounded-full hover:bg-gray-500 transition-colors duration-300">操作説明</button>
+            </div>
         </div>
     </div>
-    <div id="result-bg" class="hidden bg-gray-300 text-center fixed top-0 left-0 w-full h-full flex flex-col gap-6 items-center justify-center z-50">
+    <div id="result-bg" class="hidden bg-gray-200 text-center fixed top-0 left-0 w-full h-full flex flex-col gap-6 items-center justify-center z-40">
         <p class="text-2xl font-bold">あなたのMBTIタイプは</p>
         <div id="result-container" class="bg-white w-72 rounded-xl shadow-2xl flex flex-col items-center overflow-hidden relative z-10">
             <div id="result-title" class="w-full h-1/2 p-6 text-white">
@@ -38,7 +48,7 @@
             </div>
             <div id="result-description" class="text-justify text-md p-6"></div>
         </div>
-        <button id="restart-btn" class="bg-gray-600 text-white font-bold w-12 h-12 rounded-full hover:bg-gray-700 transition-colors duration-300 shadow-lg"><i class="bi bi-arrow-clockwise"></i></button>
+        <button id="restart-btn" class="bg-gray-600 text-white font-bold w-12 h-12 rounded-full hover:bg-gray-700 transition-colors duration-300 shadow-lg"><i class="bi bi-arrow-clockwise" title="再開"></i></button>
     </div>
     <script src="js/questions.js"></script>
     <script src="js/results.js"></script>

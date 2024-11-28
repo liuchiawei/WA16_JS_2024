@@ -16,7 +16,10 @@ const resultType = document.getElementById("result-type");
 const resultName = document.getElementById("result-name");
 const resultDescription = document.getElementById("result-description");
 const div = document.createElement("div");
+const infoContent = document.getElementById("info-content");
+const infoBtn = document.getElementById("info-btn");
 
+let shouldStop = false;
 let currentQuestionIndex = 0;
 let mbtiScore = {
   "E/I": 0,
@@ -118,9 +121,13 @@ function showResult() {
     "z-0"
   );
   resultBackground.append(div);
+  // キーボード操作を停止
+  document.removeEventListener("keydown", swipe);
+  shouldStop = true;
 }
 
 function yes() {
+  if (shouldStop) return;
   questionCard.classList.add("swipe-right");
   score(1);
   currentQuestionIndex++;
@@ -135,6 +142,7 @@ function yes() {
 }
 
 function no() {
+  if (shouldStop) return;
   score(-1);
   currentQuestionIndex++;
   if (currentQuestionIndex < questions.length) {
@@ -145,6 +153,17 @@ function no() {
     }, 400);
   } else {
     showResult();
+  }
+}
+
+/**
+ * 操作説明を表示する関数
+ */
+function toggleInfo() {
+  if (infoContent.classList.contains("hidden")) {
+    infoContent.classList.remove("hidden");
+  } else {
+    infoContent.classList.add("hidden");
   }
 }
 
@@ -203,6 +222,7 @@ noBtn.onclick = no;
 restartBtn.onclick = function () {
   location.reload();
 };
+infoBtn.onclick = toggleInfo;
 
 // 初期設定
 showQuestion();
@@ -211,12 +231,16 @@ swipe();
 // キーボード操作
 document.onkeydown = function (event) {
   if (event.key === "ArrowRight") {
+    event.preventDefault();
     yes();
   } else if (event.key === "y") {
+    event.preventDefault();
     yes();
   } else if (event.key === "n") {
+    event.preventDefault();
     no();
   } else if (event.key === "ArrowLeft") {
+    event.preventDefault();
     no();
   }
 };
