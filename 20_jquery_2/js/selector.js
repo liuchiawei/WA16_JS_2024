@@ -1,25 +1,28 @@
 $(() => {
     // TODO: id=title
-    var titleElement
+    var titleElement = $("#title")
     console.log(titleElement)
 
     // TODO: class=city
-    var cityElements
+    var cityElements = $(".city")
+    // document.getElementsByClassName('city')
+    // document.querySelectorAll('.city')
     console.log(cityElements)
 
     // TODO: id=jp-city の class=city
-    var jpCityList
+    var jpCityList = $('#jp-city > .city')
     console.log(jpCityList)
 
     // TODO: id=us-city
-    var usCityList
+    var usCityList = $('#us-city > .city')
     console.log(usCityList)
 
     // TODO: html() 取得
-    var title
-    console.log(title)
+    var title = $('#title').html()
+    console.log("title: ", title)
 
     // TODO: html() 設定
+    $('#title').html('JP City')
 
     // TODO: .city に addClass()
     // bg-gray-300
