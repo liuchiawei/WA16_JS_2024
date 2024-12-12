@@ -49,6 +49,7 @@ $(function () {
         if (selected.length) {
             const element = newItem();
             // TODO: 選択中の要素の前に追加
+            selected.before(element)
 
             $('#input-text').val('');
         } else {
@@ -60,6 +61,7 @@ $(function () {
         if (selected.length) {
             const element = newItem();
             // TODO: 選択中の要素の後に追加
+            selected.after(element)
 
             $('#input-text').val('');
         } else {
@@ -80,6 +82,7 @@ $(function () {
 
     $('#item-list').on('click', 'li', function () {
         $('#item-list li').removeClass(selectedClass).addClass(unselectedClass);
+        // クリックした要素だけ、選択中にする
         $(this).addClass(selectedClass).removeClass(unselectedClass);
         // TODO: 選択
         // 選択用のメモリに、自分自身を入れる
