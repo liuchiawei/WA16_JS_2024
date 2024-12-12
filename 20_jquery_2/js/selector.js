@@ -2,6 +2,8 @@ $(() => {
     // TODO: id=title
     var titleElement = $("#title")
     console.log(titleElement)
+    // document.getElementById('title')
+    // document.querySelector('#title')
 
     // TODO: class=city
     var cityElements = $(".city")
