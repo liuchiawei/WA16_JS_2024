@@ -5,44 +5,56 @@ $(function () {
 
     $("#showBtn").on("click", function () {
         // TODO: パネルを表示
+        panel.show(500)
     });
 
     $("#hideBtn").on("click", function () {
         // TODO: パネルを非表示
+        panel.hide(500)
     });
 
     $("#toggleBtn").on("click", function () {
         // TODO: パネルをトグル表示
+        panel.toggle(500)
     });
 
     $("#fadeInBtn").on("click", function () {
         // TODO: パネルをフェードイン
+        panel.fadeIn(500)
     });
 
     $("#fadeOutBtn").on("click", function () {
         // TODO: パネルをフェードアウト
+        panel.fadeOut(500)
     });
 
     $("#fadeToggleBtn").on("click", function () {
         // TODO: パネルをフェードトグル
+        panel.fadeToggle(500)
     });
 
     $("#slideDownBtn").on("click", function () {
         // TODO: パネルをスライド表示
+        panel.slideDown(500)
     });
 
     $("#slideUpBtn").on("click", function () {
         // TODO: パネルをスライド非表示
+        panel.slideUp(500)
     });
 
     $("#slideToggleBtn").on("click", function () {
         // TODO: パネルをスライドトグル
+        panel.slideToggle(500)
     });
 
     $("#easingBtn").on("click", function () {
         initBox();
         // TODO: box1 を width=300px でアニメーション: easing=linear
+        box1.animate({ width: '300px'}, 2500, 'linear')
+
         // TODO: box2 を width=300px でアニメーション: easing=swing
+        box2.animate({ width: '300px'}, 2500, 'swing')
     })
 
     $("#animateBtn").on("click", function () {
@@ -71,11 +83,19 @@ $(function () {
         // TODO: box1 に CSS設定
         // width = 100px
         // height = 100px
+        box1.css({
+            width: '100px',
+            height: '100px',
+        })
 
         box2.removeClass("bg-blue-400").addClass("bg-green-400");
         // TODO: box2 に CSS設定
         // width = 100px
         // height = 100px
+        box2.css({
+            width: '100px',
+            height: '100px',
+        })
     }
 
     initBox();

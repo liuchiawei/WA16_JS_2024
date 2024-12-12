@@ -58,7 +58,8 @@ $(function () {
     });
 
     $('#btn-after').on('click', function () {
-        if (selected.length) {
+        // if (selected.length) {
+        if (selected) {
             const element = newItem();
             // TODO: 選択中の要素の後に追加
             selected.after(element)
@@ -72,6 +73,7 @@ $(function () {
     $('#btn-remove').on('click', function () {
         if (selected) {
             // TODO: 選択中の要素を削除
+            selected.remove();
 
             // 選択解除
             selected = $();
