@@ -8,13 +8,13 @@ const worksData = [
     {
         x: 300, y: 200,
         src: "images/character_2.png",
-        frameClass: "circle",
+        frameClass: "square",
         title: "作品2",
     },
     {
         x: 500, y: 0,
         src: "images/character_3.png", 
-        frameClass: "circle",
+        frameClass: "triangle",
         title: "作品3"
     },
     {
@@ -26,7 +26,7 @@ const worksData = [
     {
         x: 600, y: 400,
         src: "images/character_5.png", 
-        frameClass: "circle",
+        frameClass: "triangle",
         title: "作品5"
     }
 ];

@@ -115,6 +115,7 @@ $(function () {
     function createWorkElement(data) {
         const work = $("<div>").addClass("work");
         const image = $("<img>").addClass("image-item").attr("src", data.src);
+        image.addClass(data.frameClass)
         work.append(image);
         return work;
     }

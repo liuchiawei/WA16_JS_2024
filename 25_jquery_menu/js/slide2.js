@@ -2,37 +2,32 @@ $(function () {
     const $menuButton = $('#menu-button');
     const $menuLink = $('#slide-menu a[href^="#"]');
     const $slideMenu = $('#slide-menu');
-    const headerHeight = $('#header-menu').outerHeight() + 10;
+    const headerHeight = $('#header-menu').outerHeight(); // ヘッダーの高さを取得
 
-    // クリックイベント
-    $menuButton.on('click', function () {
-        slideMenu();
-    });
-
-    // 強制再読み込み
-    // Win: Ctrl + Shift + R
-    // Mac: Cmd + Shift + R
     // 初期化処理
     function initMenu() {
-        // TODO: css指定：transform: 'translateX(-100%)'
-        // 横軸方向に、-100%ずらず（左）
         $slideMenu.css({
-            transform: 'translateX(-100%)'
+            position: 'fixed', // 固定位置
+            top: headerHeight + 'px', // ヘッダーの下に配置
+            left: '-100%',    // 初期状態は画面外に隠す
+            height: `calc(100vh - ${headerHeight}px)` // ヘッダー分の高さを差し引く
         });
     }
 
     // スライド処理
     function slideMenu() {
-        var x = '0px';
-        // TODO: スライドメニューの class=on をトグル
+        let x = '0px';
         $slideMenu.toggleClass('on');
-        if ($slideMenu.hasClass('on')) {
-            // TODO: x をスライドメニューの幅で設定
-            x = $slideMenu.width() + 'px'
+        if (!$slideMenu.hasClass('on')) {
+            x = '-' + $slideMenu.width() + 'px';
         }
-        // TODO: marginLeft に xを設定してアニメーション
-        $slideMenu.animate({ marginLeft: x }, 300)
+        $slideMenu.animate({ left: x }, 300);
     }
+
+    // クリックイベント
+    $menuButton.on('click', function () {
+        slideMenu();
+    });
 
     // スムーススクロール
     $menuLink.on('click', function (e) {
