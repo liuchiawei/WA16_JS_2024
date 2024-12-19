@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <header id="header" class="bg-gray-700 text-yellow-400 text-center py-16">
+        <h1 class="text-4xl font-bold">Cafe JS</h1>
+    </header>
+
+    <nav id="nav" class="top-0 w-full bg-gray-800 text-yellow-400">
+        <ul class="flex justify-between">
+            <li class="menu w-[25%] relative">
+                <a href="#hot-drinks" class="block w-full px-4 py-3 hover:bg-white">Hot Drinks</a>
+                <ul class="absolute hidden left-0 bg-gray-800 text-yellow-400 w-full">
+                    <li><a href="#hot-drinks" class="block px-4 py-3 hover:bg-white">Espresso</a></li>
+                    <li><a href="#hot-drinks" class="block px-4 py-3 hover:bg-white">Cafe Latte</a></li>
+                    <li><a href="#hot-drinks" class="block px-4 py-3 hover:bg-white">Herbal Tea</a></li>
+                </ul>
+            </li>
+            <li class="menu w-[25%] relative">
+                <a href="#iced-drinks" class="block w-full px-4 py-3 hover:bg-white">Iced Drinks</a>
+                <ul class="absolute hidden left-0 bg-gray-800 text-yellow-400 w-full">
+                    <li><a href="#iced-drinks" class="block px-4 py-3 hover:bg-white">Iced Latte</a></li>
+                    <li><a href="#iced-drinks" class="block px-4 py-3 hover:bg-white">Iced Mocha</a></li>
+                    <li><a href="#iced-drinks" class="block px-4 py-3 hover:bg-white">Iced Americano</a></li>
+                </ul>
+            </li>
+            <li class="menu w-[25%] relative">
+                <a href="#meals" class="block w-full px-4 py-3 hover:bg-white">Meals</a>
+                <ul class="absolute hidden left-0 bg-gray-800 text-yellow-400 w-full">
+                    <li><a href="#meals" class="block px-4 py-3 hover:bg-white">Grilled Cheese</a></li>
+                    <li><a href="#meals" class="block px-4 py-3 hover:bg-white">Caesar Salad</a></li>
+                    <li><a href="#meals" class="block px-4 py-3 hover:bg-white">Chicken Wrap</a></li>
+                </ul>
+            </li>
+            <li class="menu w-[25%] relative">
+                <a href="#sweets" class="block w-full px-4 py-3 hover:bg-white">Sweets</a>
+                <ul class="absolute hidden left-0 bg-gray-800 text-yellow-400 w-full">
+                    <li><a href="#sweets" class="block px-4 py-3 hover:bg-white">Cheesecake</a></li>
+                    <li><a href="#sweets" class="block px-4 py-3 hover:bg-white">Chocolate Brownie</a></li>
+                    <li><a href="#sweets" class="block px-4 py-3 hover:bg-white">Ice Cream Sundae</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="">
+        <section id="information" class="h-screen bg-gray-200">
+            
+        </section>
+        <section id="hot-drinks" class="h-screen bg-gray-200">
+            <h2 class="text-xl font-bold p-3 bg-gray-800 text-yellow-400">Hot Drinks</h2>
+        </section>
+        <section id="iced-drinks" class="h-screen bg-gray-300">
+            <h2 class="text-xl font-bold p-3 bg-gray-800 text-yellow-400">Iced Drinks</h2>
+        </section>
+        <section id="meals" class="h-screen bg-gray-200">
+            <h2 class="text-xl font-bold p-3 bg-gray-800 text-yellow-400">Meals</h2>
+        </section>
+        <section id="sweets" class="h-screen bg-gray-300">
+            <h2 class="text-xl font-bold p-3 bg-gray-800 text-yellow-400">Sweets</h2>
+        </section>
+    </main>
+
+    <script src="js/dropdown.js"></script>
+</body>
+
+</html>

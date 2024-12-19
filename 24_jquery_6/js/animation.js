@@ -51,30 +51,49 @@ $(function () {
     $("#easingBtn").on("click", function () {
         initBox();
         // TODO: box1 を width=300px でアニメーション: easing=linear
-        box1.animate({ width: '300px'}, 2500, 'linear')
+        box1.animate({ width: '300px' }, 2500, 'linear')
 
         // TODO: box2 を width=300px でアニメーション: easing=swing
-        box2.animate({ width: '300px'}, 2500, 'swing')
+        box2.animate({ width: '300px' }, 2500, 'swing')
     })
 
+    // 強制再読み込み
+    // Win: Ctrl + Shift + R
+    // Mac: Cmd + Shift + R
     $("#animateBtn").on("click", function () {
         // TODO: box1 を連続アニメーション
+        box1.animate({ width: '300px', height: '50px' }, 1000)
+            .animate({ opacity: 0.2 }, 1000)
+            .animate({
+                width: '100px',
+                height: '100px',
+                opacity: 1,
+            }, 1000)
 
         // TODO: box2 を連続アニメーション
+        box2.animate({ width: '50px', height: '50px' }, 1000)
+            .delay(1000)
+            .animate({
+                width: '100px',
+                height: '100px',
+            }, 1000)
     });
 
     $("#queueBtn").on("click", function () {
         const items = $('.item');
         items.addClass('hidden');
 
-        const delayTime = 300;
+        const delayTime = 1000;
 
         // items 繰り返し(each)
         items.each(function (i) {
             // TODO: delay()
             // TODO: queue()
-            // TODO: コールバックで、class=hidden を削除
-            // TODO: dequeue()
+            $(this).delay((i + 1) * delayTime).queue(() => {
+                // TODO: コールバックで、class=hidden を削除
+                // TODO: dequeue()
+                $(this).removeClass('hidden').dequeue();
+            })
         });
     });
 

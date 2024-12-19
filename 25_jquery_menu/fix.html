@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixed Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <header id="header" class="bg-gray-700 text-yellow-400 text-center py-16">
+        <h1 class="text-4xl font-bold">Cafe JS</h1>
+    </header>
+
+    <nav id="nav" class="top-0 w-full bg-gray-800 text-yellow-400">
+        <ul class="flex justify-between">
+            <li class="w-[25%] relative group">
+                <a href="#hot-drinks" class="block w-full px-4 py-3 hover:bg-gray-600">Hot Drinks</a>
+            </li>
+            <li class="w-[25%] relative group">
+                <a href="#iced-drinks" class="block w-full px-4 py-3 hover:bg-gray-600">Iced Drinks</a>
+            </li>
+            <li class="w-[25%] relative group">
+                <a href="#meals" class="block w-full px-4 py-3 hover:bg-gray-600">Meals</a>
+            </li>
+            <li class="w-[25%] relative group">
+                <a href="#sweets" class="block w-full px-4 py-3 hover:bg-gray-600">Sweets</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="">
+        <section class="h-screen bg-gray-200">
+        </section>
+        <section class="h-screen bg-gray-300">
+        </section>
+    </main>
+
+    <script src="js/fix.js"></script>
+</body>
+
+</html>
