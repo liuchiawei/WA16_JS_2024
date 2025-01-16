@@ -1,0 +1,26 @@
+.flipLeft {
+    transform: perspective(1000px) rotateX(0);
+    opacity: 1;
+    z-index: 0;
+}
+
+.flipLeft.is-active {
+    animation: flip-left 1.0s ease-in-out;
+}
+
+@keyframes flip-left {
+    0% {
+        opacity: 0;
+        transform: perspective(1000px) rotateY(0);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: perspective(1000px) rotateY(180deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: perspective(1000px) rotateY(360deg);
+    }
+}

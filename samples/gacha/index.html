@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ガチャ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-black">
+
+  <div class="container mx-auto p-6 flex flex-col items-center justify-center h-full">
+    <!-- 2カラムレイアウト用のグリッド -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+
+      <!-- カード表示部分 -->
+      <div class="flex flex-col items-center">
+        <!-- Loading Modal -->
+        <div id="loading-modal" class="modal hidden">
+          <div class="modal-content">
+            <div class="loading-spinner"></div>
+          </div>
+        </div>
+        
+        <div class="flex justify-center">
+          <img id="card-image" src="" alt="Card Image" class="flipLeft mb-4 w-64 h-auto rounded-lg" />
+        </div>
+        <button class="w-full bg-gray-800 text-white px-4 py-4 rounded-lg hover:bg-gray-800" onclick="play()">Play</button>
+      </div>
+
+      <!-- 集計表部分 -->
+      <div class="w-full">
+        <div class="overflow-x-auto">
+          <table class="min-w-full text-white">
+            <thead>
+              <tr class="w-full bg-black">
+                <th class="text-left py-2 px-4 border-b">Rarity</th>
+                <th class="text-left py-2 px-4 border-b">Count</th>
+                <th class="text-left py-2 px-4 border-b">%</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="py-2 px-4 border-b font-medium">N</td>
+                <td id="count-N" class="py-2 px-4 border-b"></td>
+                <td id="per-N" class="py-2 px-4 border-b"></td>
+              </tr>
+              <tr>
+                <td class="py-2 px-4 border-b font-medium">R</td>
+                <td id="count-R" class="py-2 px-4 border-b"></td>
+                <td id="per-R" class="py-2 px-4 border-b"></td>
+              </tr>
+              <tr>
+                <td class="py-2 px-4 border-b font-medium">SR</td>
+                <td id="count-SR" class="py-2 px-4 border-b"></td>
+                <td id="per-SR" class="py-2 px-4 border-b"></td>
+              </tr>
+              <tr>
+                <td class="py-2 px-4 border-b font-medium">SSR</td>
+                <td id="count-SSR" class="py-2 px-4 border-b"></td>
+                <td id="per-SSR" class="py-2 px-4 border-b"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+
+</html>

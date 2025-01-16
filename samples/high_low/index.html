@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>High & Low Game</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-gray-100 flex justify-center">
+
+  <div class="container max-w-xl bg-gray-200 rounded-lg mt-6">
+
+    <div class="px-6 text-lg font-medium flex items-center justify-between">
+      <h2 class="font-bold text-gray-600">High & Low</h2>
+      <div class=" p-3 text-gray-700">
+        <span>score:</span>
+        <span id="score-display">0</span>
+      </div>
+    </div>
+
+    <div id="result-area" class="hidden flex justify-center">
+      <div class="">
+        <button onclick="initGame()" id="retry-btn"
+          class="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600">Retry Game</button>
+        <div id="result" class="p-3 text-center text-2xl font-semibold text-gray-800"></div>
+      </div>
+    </div>
+
+    <div id="pc">
+      <h3 class="text-center text-gray-600 font-bold p-3">PC</h3>
+      <div id="pc-card"
+        class="flex justify-center items-center h-40 w-32 border-1 border-gray-500 rounded-lg bg-white text-4xl font-bold text-gray-800 mx-auto mb-4 shadow-md">
+      </div>
+    </div>
+
+    <div id="player">
+      <div id="my-card"
+        class="flipLeft flex justify-center items-center h-40 w-32 border-1 border-gray-500 rounded-lg bg-white text-4xl font-bold text-gray-800 mx-auto shadow-md">
+      </div>
+      <h3 class="text-center text-gray-600 font-bold p-3">Player</h3>
+    </div>
+
+    <div id="select-button-area" class="p-6 flex justify-center space-x-4 text-center">
+      <button id="low-btn" class="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600"
+        onclick="choiceLow()">Low</button>
+      <button id="draw-btn" class="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600"
+        onclick="choiceDraw()">Draw</button>
+      <button id="high-btn" class="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600"
+        onclick="choiceHigh()">High</button>
+    </div>
+
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宝くじシミュレーション</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/loading.css">
+</head>
+
+<body class="min-h-screen flex justify-center">
+    <div class="text-center bg-white/90 backdrop-blur-md p-8 rounded-lg shadow-xl w-1/2">
+        <h1 class="text-3xl font-extrabold text-gray-800 mb-6 tracking-widest">宝くじシミュレーション</h1>
+
+        <p id="message" class="text-xl font-mono text-gray-700 mb-4"></p>
+
+        <div class="m-2 p-3 border border-gray-300 rounded-lg">
+            <p id="result" class="text-xl font-mono text-gray-700"></p>
+            <p id="lotteryNumber" class="text-xl font-mono text-gray-700"></p>
+        </div>
+
+        <button id="simulateButton"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:ring focus:ring-blue-300"
+            onclick="simulateStart()">
+            シミュレーション開始
+        </button>
+
+        <div class="text-left my-5">
+            <div class="text-xl text-gray-600 my-2">
+                <label for="attempts" class="mr-5">試行回数</label>
+                <span id="attempts" class="font-bold"></span>
+                <span>回</span>
+            </div>
+            <div class="text-xl text-gray-600 my-2">
+                <label for="cost" class="mr-5">総コスト</label>
+                <span id="cost" class="font-bold"></span>
+                <span>円</span>
+            </div>
+            <div class="text-xl text-gray-600 my-2">
+                <label for="cost" class="mr-5">今回収支</label>
+                <span id="profit" class="font-bold text-red-500"></span>
+                <span>円</span>
+            </div>
+            <div class="text-xl text-gray-600 my-5 py-5 border-t">
+                <label for="cost" class="mr-5">生涯収支</label>
+                <span id="lifetime-profit" class="font-bold text-red-500"></span>
+                <span>円</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
