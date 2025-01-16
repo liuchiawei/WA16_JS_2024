@@ -25,7 +25,6 @@ $(function () {
             // --- ここまで（繰り返し） --- 
         });
 
-
         // 画像が読み込みイベント
         $('.item').on('load', function () {
             // TODO: ローディングフェードアウト＆削除
@@ -41,9 +40,12 @@ $(function () {
     $imageList.on({
         mouseenter: function () {
             // TODO: マウスオーバーでキャプション表示: class=caption
+            // li の中から class = caption を探す
+            $(this).find('.caption').stop().fadeIn(300)
         },
         mouseleave: function () {
             // TODO: マウスアウトでキャプション非表示: class=caption
+            $(this).find('.caption').stop().fadeOut(300)
         }
     }, 'li');
 
