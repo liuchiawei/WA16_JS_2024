@@ -36,8 +36,10 @@ function initGame() {
     isWin = false;
     isDraw = false;
 
-    // PCのカードをランダムで取得
-    pcCard.innerHTML = randomNumber(1, 13);
+    // PCのカードをランダムで取得し、pcNumberに設定
+    pcNumber = randomNumber(1, 13);
+    pcCard.innerHTML = pcNumber;
+
     myCard.innerHTML = "";
 
     resultDisplay.style.display = 'none';

@@ -23,12 +23,18 @@ $(document).ready(function () {
         // スクロールオフセット
         const offset = windowHeight / 3;
         // TODO: スクロール位置取得: scrollTop()
-        const scrollTop = 0
+        const scrollTop = $(window).scrollTop();
         // TODO: コンテンツ位置取得: offset().top
-        const top = 0
+        const top = $(selector).offset().top;
+        // console.log(top)
+
+        var left = offset.left;
+        // スクロールが対象コンテンツに達した時
         if (scrollTop + windowHeight > top + offset && $(selector).hasClass('invisible')) {
             // TODO: 表示処理：invisible クラス削除
+            $(selector).removeClass('invisible')
             // TODO: エフェクト処理： targets で設定した callback関数の実行
+            callback(selector)
         }
     }
 
@@ -37,6 +43,8 @@ $(document).ready(function () {
         // TODO: アニメーション
         // css: opacity: 0
         // animate: opacity: 1
+        $(selector).css({ opacity: 0 })
+            .animate({ opacity: 1 }, 1000)
     }
 
     // スライドイン
@@ -44,6 +52,8 @@ $(document).ready(function () {
         // TODO: アニメーション
         // css: opacity: 0, width:  0
         // animate: opacity: 1, width: 100%
+        $(selector).css({ opacity: 0, width: 0 })
+            .animate({ opacity: 1, width: '100%' }, 1000)
     }
 
     // スライド（レフト）
@@ -56,6 +66,14 @@ $(document).ready(function () {
         // TODO: アニメーション
         // css: position: relative, opacity: 0, left: start px
         // animate: opacity: 1, left: end px
+        $(selector).css({
+            position: 'relative',
+            opacity: 0,
+            left: start + 'px',
+        }).animate({ 
+            opacity: 1, 
+            left: end + 'px',
+        }, 1000)
     }
 
 });

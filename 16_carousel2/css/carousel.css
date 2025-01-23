@@ -4,7 +4,7 @@
 
 .carousel-container {
     /*  width, height の範囲外は非表示 */
-    overflow: hidden;
+    /* overflow: hidden; */
     width: 100%;
     margin: 1rem 0;
 }
@@ -20,7 +20,7 @@
     /* コンテナ内に収まるように縮小 */
     object-fit: contain;
     /* 画像の幅を固定 */
-    width: 100%;
+    width: 200px;
     /* 高さを自動調整 */
     height: auto;
     /* 画像が縮小されないように */
