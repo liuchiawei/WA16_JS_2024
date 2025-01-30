@@ -24,6 +24,7 @@ xhr.onerror = function () {
 };
 
 // TODO: XHRリクエスト（非同期）:send()
+xhr.send();
 
 /**
  * ユーザー情報をHTMLにレンダリング

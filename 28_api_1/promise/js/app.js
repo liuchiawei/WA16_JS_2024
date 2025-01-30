@@ -28,8 +28,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     var index = Math.floor(Math.random() * quotes.length);
                     const randomQuote = quotes[index];
                     // TODO: 成功時: resolve() を実行
+                    resolve(randomQuote);
                 } else {
                     // TODO: 成功時: reject() を実行: メッセージ「名言の取得に失敗しました。」
+                    reject('うーん、名言が思いつかなかったよ！')
                 }
             }, 2000);
         });
@@ -40,9 +42,11 @@ document.addEventListener("DOMContentLoaded", function () {
         fetchRandomQuote()
             .then(quote => {
                 // TODO: 名言表示：displayQuote() を実行
+                displayQuote(quote);
             })
             .catch(error => {
                 // TODO: 失敗時の処理： displayError() を実行
+                displayError(error);
             })
             .finally(() => {
                 loadingDiv.classList.add("hidden");

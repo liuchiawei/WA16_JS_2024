@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function fetchDataWithDelay(data, delay, callback) {
         setTimeout(() => {
             // TODO: callback 関数実行（データも渡す）
+            callback(data);
         }, delay);
     }
 
