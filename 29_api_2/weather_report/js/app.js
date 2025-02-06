@@ -12,7 +12,7 @@ async function fetchWeather() {
         // const uri = 'api/weather/list.json';
 
         // TODO:APIから非同期でデータ取得: fetch()
-        const response = {};
+        const response = await fetch(uri);
         if (!response.ok) {
             displayError("天気情報の取得に失敗しました");
         }
@@ -41,10 +41,10 @@ async function displayWeather(area = "") {
         }
 
         // TODO: 日時表示: weatherData.reportedAt
-        reportedAtContainer.innerHTML;
+        reportedAtContainer.innerHTML = weatherData.reportedAt;
 
         // TODO: トピック表示: weatherData.topics
-        topicContainer.innerHTML;
+        topicContainer.innerHTML = weatherData.topics;
 
         // 天気カード生成
         cities.forEach(({ city, temperature_max, temperature_min, condition, precipitationProbability }) => {
@@ -53,16 +53,16 @@ async function displayWeather(area = "") {
 
             // TODO: 仕様書からデータバインド
             card.innerHTML = `
-                <h2 class="text-md font-bold mb-2"></h2>
+                <h2 class="text-md font-bold mb-2">${city}</h2>
                 <p class="flex justify-center">
-                    <img class="w-12 h-12" src="images/.png" alt="">
+                    <img class="w-12 h-12" src="images/${condition}.png" alt="">
                 </p>
                 <p class="text-gray-500">
-                    <span class="text-red-500 font-bold"></span>
+                    <span class="text-red-500 font-bold">${temperature_max}</span>
                     /
-                    <span class="text-blue-500 font-bold"></span>
+                    <span class="text-blue-500 font-bold">${temperature_min}</span>
                 </p>
-                <p class="text-gray-500">%</p>
+                <p class="text-gray-500">${precipitationProbability}%</p>
             `;
             container.appendChild(card);
         });

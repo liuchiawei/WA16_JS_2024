@@ -7,13 +7,13 @@ const errorDisplay = document.getElementById('error');
 const loadPrefectures = async () => {
     try {
         // TODO: 都道府県JSON読み込み（非同期）: PREFECTURE_FILE_PATH
-        const response = {};
+        const response = await fetch(PREFECTURE_FILE_PATH);
         if (!response.ok) {
             errorDisplay.innerHTML = '都道府県読み込みエラー';
             return;
         }
         // TODO: レスポンスされたJSONを、オブジェクトに変換（非同期）
-        const prefectures = {};
+        const prefectures = await response.json();
         console.log(prefectures);
 
         // 都道府県プルダウン作成
@@ -29,9 +29,9 @@ const renderPrefectures = (prefectures) => {
     prefectures.forEach((prefecture) => {
         var option = document.createElement('option');
         // TODO: value に都道府県コード設定
-        option.value;
+        option.value = prefecture.code;
         // TODO: テキストに都道府県名設定
-        option.innerHTML;
+        option.innerHTML = prefecture.name;
         // selectタグに、optionタグ追加
         document.getElementById('prefecture').appendChild(option)
     })
@@ -41,13 +41,14 @@ const renderPrefectures = (prefectures) => {
 const searchAddress = async (zipcode) => {
     try {
         const query_param = new URLSearchParams({ zipcode: zipcode, })
+        console.log(query_param.toString())
         // TODO: SEARCH_URI に zipcode を追加
-        const uri = SEARCH_URI;
+        const uri = SEARCH_URI + '?' + query_param.toString();
         console.log(uri);
         // TODO: 郵便番号検索APIにアクセス（非同期）
-        const response = {};
+        const response = await fetch(uri);
         // TODO: JSONデータを変換（非同期）
-        const data = {};
+        const data = await response.json();
         return data;
     } catch (error) {
         errorDisplay.innerHTML = error;
@@ -66,9 +67,9 @@ const searchHandler = async () => {
     if (data.results) {
         const results = data.results[0];
         // TODO: value に都道府県コード設定: prefcode
-        document.getElementById('prefecture').value;
+        document.getElementById('prefecture').value = results.prefcode;
         // TODO: テキストに住所設定: address2, address3
-        document.getElementById('city').value;
+        document.getElementById('city').value = results.address2 + results.address3;
     } else {
         errorDisplay.innerHTML = data.message;
     }
