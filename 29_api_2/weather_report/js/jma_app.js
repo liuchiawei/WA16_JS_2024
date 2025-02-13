@@ -11,6 +11,8 @@ var weatherData;
 var centers;
 var offices;
 
+// Mac: Cmd + Shift + R
+// Win: Ctrl + Shift + R
 /**
  * getCenter
  * API取得: エリアセンターデータ
@@ -18,8 +20,8 @@ var offices;
  */
 async function getCenter() {
     try {
-        // API URIの設定: https://www.jma.go.jp/bosai/common/const/area.json
-        const uri = '';
+        // TODO: API URIの設定: https://www.jma.go.jp/bosai/common/const/area.json
+        const uri = 'https://www.jma.go.jp/bosai/common/const/area.json';
         // const uri = './data/jma-area.json';
         const response = await fetch(uri);
         if (!response.ok) {
@@ -39,7 +41,7 @@ async function getCenter() {
 async function getForecast(officeCode) {
     try {
         // TODO: API URIの設定: https://www.jma.go.jp/bosai/forecast/data/forecast/xxxxx.json
-        const uri = '';
+        const uri = 'https://www.jma.go.jp/bosai/forecast/data/forecast/' + officeCode + '.json';
         // const uri = "./data/dummy.json";
         console.log(uri)
         const response = await fetch(uri);
@@ -150,16 +152,16 @@ async function displayWeather(officeCode) {
             card.className = 'bg-white shadow-md rounded-lg p-3 text-center';
             // TODO: 気象データをバインド
             card.innerHTML = `
-                    <h2 class="text-md font-bold mb-2"></h2>
+                    <h2 class="text-md font-bold mb-2">${name}</h2>
                     <p class="flex justify-center">
-                        <img class="w-12 h-12" src="svg/" alt="">
+                        <img class="w-12 h-12" src="svg/${code}.svg" alt="${weatherName}">
                     </p>
                     <p class="text-gray-500">
-                        <span class="text-red-500 font-bold"></span>
+                        <span class="text-red-500 font-bold">${temperature[3]}</span>
                         /
-                        <span class="text-blue-500 font-bold"></span>
+                        <span class="text-blue-500 font-bold">${temperature[2]}</span>
                     </p>
-                    <p class="text-gray-500">%</p>
+                    <p class="text-gray-500">${precipitaion}%</p>
                 `;
             weatherContainer.appendChild(card);
         });

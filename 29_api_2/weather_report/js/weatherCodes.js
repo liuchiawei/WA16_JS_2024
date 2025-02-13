@@ -247,6 +247,7 @@ const weatherCodes = {
     "200": [
         "200.svg",
         "200.svg",
+        "270.svg",
         "200",
         "曇",
         "CLOUDY"
