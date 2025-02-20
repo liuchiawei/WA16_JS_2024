@@ -1,3 +1,4 @@
+// DOMの取得
 const micToggleBtn = document.getElementById('mic-toggle');
 const consoleEl = document.getElementById('console');
 const wordListEl = document.getElementById('word-list');
@@ -32,7 +33,7 @@ function predictWord(words) {
             // スコアが高い順に並べ替え
             scores.sort((s1, s2) => s2.score - s1.score);
             // TODO: 単語決定: scores[0].word;
-            const recognizedWord = "";
+            const recognizedWord = scores[0].word;
             console.log(recognizedWord);
 
             // 単語ハイライト
@@ -100,9 +101,8 @@ function highlightWord(word) {
  */
 async function initAudioMeter() {
     try {
-        // TODO: 音声付きメディアストリーム取得: autio : true
-        // const stream = await navigator.mediaDevices.getUserMedia({ audio: false });
-        const stream = null;
+        // TODO: 音声付きメディアストリーム取得: audio : true
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
         if (!stream) return;
 
         // オーディオコンテキストの作成
@@ -182,13 +182,14 @@ async function app() {
 
     // SpeechCommands の作成（BROWSER_FFT はブラウザ内の FFT アルゴリズムを利用）
     recognizer = speechCommands.create('BROWSER_FFT');
-    // モデルの読み込みまで待機
-    // await recognizer.ensureModelLoaded();
+    // TODO: モデルの読み込みまで待機
+    await recognizer.ensureModelLoaded();
 
     displayConsole(firstMessage);
 
     // TODO: 単語ラベル取得: recognizer.wordLabels()
-    const words = {};
+    const words = recognizer.wordLabels();
+    console.log(words);
     // 単語ラベル表示
     displayWordList(words);
 
