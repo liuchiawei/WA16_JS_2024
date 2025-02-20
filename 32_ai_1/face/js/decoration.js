@@ -2,8 +2,8 @@ import * as THREE from 'three';
 
 // スタンプ画像設定をオブジェクトに統合
 const faceImages = {
-    dog1: { scale: 400, point: 1, dx: 5, dy: 80 },
-    cat1: { scale: 400, point: 1, dx: 5, dy: 100 },
+    dog1: { scale: 300, point: 1, dx: 5, dy: 80 },
+    cat1: { scale: 300, point: 1, dx: 5, dy: 100 },
     dog2: { scale: 600, point: 1, dx: 5, dy: 100 },
     panda1: { scale: 600, point: 1, dx: 5, dy: 100 },
     bear1: { scale: 600, point: 1, dx: 5, dy: 100 },
@@ -202,7 +202,6 @@ function updateFace() {
 }
 
 // スタンプのためのプレーンの位置と回転、スケールを更新
-// スタンプのためのプレーンの位置と回転、スケールを更新
 function updatemesh() {
     if (!results || results.length === 0) {
         return;
@@ -212,34 +211,58 @@ function updatemesh() {
     const quaternion = calculateNormalVector();
     // スタンプの回転
     mesh.quaternion.copy(quaternion);
-    // スタンプの位置
-    const settings = faceImages[currentFaceImage];
+
     // スタンプの位置調整
+    const settings = faceImages[currentFaceImage];
     const landmark = fixLandmarkValue(results[0].keypoints);
 
-    // 鼻の位置
+    // 鼻の位置（基準点）
     const position = landmark[settings.point];
+
+    // 顔の右端・左端・額・下顎のランドマークを取得
+    const leftFace = landmark[454];  // 左端
+    const rightFace = landmark[234]; // 右端
+    const forehead = landmark[10];   // 額の中心
+    const chin = landmark[152];      // 下顎
+
+    // 顔の横幅（3D距離）
+    const faceWidth = Math.sqrt(
+        Math.pow(rightFace.x - leftFace.x, 2) +
+        Math.pow(rightFace.y - leftFace.y, 2) +
+        Math.pow(rightFace.z - leftFace.z, 2)
+    );
+
+    // 顔の高さ（3D距離）
+    const faceHeight = Math.sqrt(
+        Math.pow(chin.x - forehead.x, 2) +
+        Math.pow(chin.y - forehead.y, 2) +
+        Math.pow(chin.z - forehead.z, 2)
+    );
+
+    // 横幅と縦幅のバランスをとってスケールを決定
+    const baseScale = settings.scale;
+    const scaleFactor = Math.max(faceWidth, faceHeight) / 200; // 300 は基準値（必要なら調整）
+
+    mesh.scale.set(baseScale * scaleFactor, baseScale * scaleFactor, 1);
+
     // スタンプの高さ調整
     const faceCenter = new THREE.Vector3(
         position.x + positionX + settings.dx,
         position.y + positionY + settings.dy,
-        position.z - zOffset,
+        position.z - zOffset
     );
 
-    // 鼻のY座標の中間点を計算
-    // TODO: 鼻の左: landmark[279]
-    const leftNose = 0;
-    // TODO: 鼻の右: landmark[49]
-    const rightNose = 0;
+    // 鼻の左右の中間点
+    const leftNose = landmark[279];
+    const rightNose = landmark[49];
     const noseYMidpoint = (leftNose.y + rightNose.y) / 2;
 
-    // 鼻のY座標の中間点に位置を調整
+    // スタンプの高さを鼻の中心に合わせる
     faceCenter.y = noseYMidpoint + settings.dy;
 
-    //  デコレーション座標を適切に配置
+    // スタンプの位置を適用
     mesh.position.copy(faceCenter);
 }
-
 
 /**
  * 顔の向き（法線ベクトル）を計算し、three.jsのクォータニオンに変換
@@ -249,15 +272,16 @@ function calculateNormalVector() {
     if (!results || results.length === 0) {
         return;
     }
+    // console.log(results);
 
     // ランドマーク取得
     const landmark = fixLandmarkValue(results[0].keypoints);
     // TODO: 鼻の先端のキーポイント: 1
-    const noseTip = landmark[0];
+    const noseTip = landmark[1];
     // TODO: 鼻の左端のキーポイント: 279
-    const leftNose = landmark[0];
+    const leftNose = landmark[279];
     // TODO: 鼻の右端のキーポイント: 49
-    const rightNose = landmark[0];
+    const rightNose = landmark[49];
 
     // 鼻の中央を計算（x, y, z）
     const midpoint = {
